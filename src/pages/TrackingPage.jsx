@@ -1,17 +1,11 @@
 import React, { useState } from 'react';
-import { 
-  Box, 
-  Typography, 
-  Paper, 
-  Grid, 
-  TextField, 
-  Button, 
-  Stepper,
-  Step,
-  StepLabel,
-  StepContent,
-  Card,
-  CardContent,
+import {
+  Box,
+  Typography,
+  Paper,
+  Grid,
+  TextField,
+  Button,
   Divider,
   List,
   ListItem,
@@ -23,7 +17,7 @@ import TrackChangesIcon from '@mui/icons-material/TrackChanges';
 import SearchIcon from '@mui/icons-material/Search';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import InventoryIcon from '@mui/icons-material/Inventory';
-import WarehouseIcon from '@mui/icons-material/Warehouse';
+
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 import FlightLandIcon from '@mui/icons-material/FlightLand';
@@ -44,11 +38,11 @@ const TrackingPage = () => {
     if (!trackingNumber.trim()) {
       return;
     }
-    
+
     // Simulate search process
     setIsSearching(true);
     setShipmentDetails(null);
-    
+
     // Mock search result - in a real app this would call an API
     setTimeout(() => {
       // Check some mock tracking numbers
@@ -60,7 +54,7 @@ const TrackingPage = () => {
         // For demo purposes, default to showing the international shipment
         setShipmentDetails(mockShipmentData.international);
       }
-      
+
       setIsSearching(false);
     }, 1000);
   };
@@ -306,52 +300,52 @@ const TrackingPage = () => {
               <Typography variant="h6" gutterBottom>
                 Shipment Summary
               </Typography>
-              
+
               <List>
                 <ListItem>
                   <ListItemIcon>
                     <TrackChangesIcon color="primary" />
                   </ListItemIcon>
-                  <ListItemText 
-                    primary="Tracking Number" 
-                    secondary={shipmentDetails.trackingNumber} 
+                  <ListItemText
+                    primary="Tracking Number"
+                    secondary={shipmentDetails.trackingNumber}
                   />
                 </ListItem>
                 <ListItem>
                   <ListItemIcon>
                     <InventoryIcon color="primary" />
                   </ListItemIcon>
-                  <ListItemText 
-                    primary="Status" 
-                    secondary={shipmentDetails.status} 
+                  <ListItemText
+                    primary="Status"
+                    secondary={shipmentDetails.status}
                   />
                 </ListItem>
                 <ListItem>
                   <ListItemIcon>
                     <LocalShippingIcon color="primary" />
                   </ListItemIcon>
-                  <ListItemText 
-                    primary="Carrier" 
-                    secondary={shipmentDetails.shipper} 
+                  <ListItemText
+                    primary="Carrier"
+                    secondary={shipmentDetails.shipper}
                   />
                 </ListItem>
                 <ListItem>
                   <ListItemIcon>
                     <CheckCircleIcon color="primary" />
                   </ListItemIcon>
-                  <ListItemText 
-                    primary="Estimated Delivery" 
-                    secondary={shipmentDetails.estimatedDelivery} 
+                  <ListItemText
+                    primary="Estimated Delivery"
+                    secondary={shipmentDetails.estimatedDelivery}
                   />
                 </ListItem>
               </List>
-              
+
               <Divider sx={{ my: 2 }} />
-              
+
               <Typography variant="subtitle2" gutterBottom>
                 Package Details
               </Typography>
-              
+
               <Grid container spacing={2}>
                 <Grid item xs={6}>
                   <Typography variant="body2" color="text.secondary">
@@ -378,13 +372,13 @@ const TrackingPage = () => {
                   </Typography>
                 </Grid>
               </Grid>
-              
+
               <Divider sx={{ my: 2 }} />
-              
+
               <Typography variant="subtitle2" gutterBottom>
                 Routing Information
               </Typography>
-              
+
               <Grid container spacing={2}>
                 <Grid item xs={12}>
                   <Typography variant="body2" color="text.secondary">
@@ -411,15 +405,15 @@ const TrackingPage = () => {
                   </Typography>
                 </Grid>
               </Grid>
-              
+
               {shipmentDetails.type === 'international' && (
                 <>
                   <Divider sx={{ my: 2 }} />
-                  
+
                   <Typography variant="subtitle2" gutterBottom>
                     Customs Information
                   </Typography>
-                  
+
                   <Grid container spacing={2}>
                     <Grid item xs={12}>
                       <Typography variant="body2" color="text.secondary">
@@ -434,27 +428,27 @@ const TrackingPage = () => {
               )}
             </Paper>
           </Grid>
-          
+
           <Grid item xs={12} md={8}>
             <Paper sx={{ p: 3 }}>
               <Typography variant="h6" gutterBottom>
                 Tracking Timeline
               </Typography>
-              
+
               <Typography variant="body2" color="text.secondary" paragraph>
                 Real-time updates on your shipment's journey:
               </Typography>
-              
+
               <Box>
                 {shipmentDetails.trackingHistory.map((event, index) => (
                   <Paper key={index} sx={{ p: 2, mb: 2, display: 'flex', alignItems: 'center' }}>
-                    <Box sx={{ 
-                      p: 1, 
-                      mr: 2, 
-                      display: 'flex', 
-                      flexDirection: 'column', 
-                      alignItems: 'center', 
-                      minWidth: '100px' 
+                    <Box sx={{
+                      p: 1,
+                      mr: 2,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      minWidth: '100px'
                     }}>
                       <Typography variant="body2" color="text.secondary">
                         {event.date}
@@ -462,10 +456,10 @@ const TrackingPage = () => {
                       <Typography variant="caption" color="text.secondary">
                         {event.time}
                       </Typography>
-                      <Box 
-                        sx={{ 
-                          mt: 1, 
-                          bgcolor: event.status === 'completed' ? 'success.main' : 
+                      <Box
+                        sx={{
+                          mt: 1,
+                          bgcolor: event.status === 'completed' ? 'success.main' :
                                  event.status === 'active' ? 'primary.main' : 'grey.500',
                           borderRadius: '50%',
                           p: 1,
@@ -483,11 +477,11 @@ const TrackingPage = () => {
                       <Typography variant="body2" color="text.secondary">
                         {event.location}
                       </Typography>
-                      <Chip 
-                        size="small" 
-                        label={event.status.charAt(0).toUpperCase() + event.status.slice(1)} 
-                        color={getStatusColor(event.status)} 
-                        sx={{ mt: 1 }} 
+                      <Chip
+                        size="small"
+                        label={event.status.charAt(0).toUpperCase() + event.status.slice(1)}
+                        color={getStatusColor(event.status)}
+                        sx={{ mt: 1 }}
                       />
                     </Box>
                   </Paper>
@@ -508,18 +502,18 @@ const TrackingPage = () => {
             Try one of these sample tracking numbers for demo purposes:
           </Typography>
           <Box sx={{ mt: 2 }}>
-            <Chip 
-              label="GE-937462817" 
+            <Chip
+              label="GE-937462817"
               sx={{ mr: 1, mb: 1 }}
               onClick={() => setTrackingNumber('GE-937462817')}
-              color="primary" 
+              color="primary"
               variant="outlined"
             />
-            <Chip 
-              label="ZE-123456" 
+            <Chip
+              label="ZE-123456"
               sx={{ mb: 1 }}
               onClick={() => setTrackingNumber('ZE-123456')}
-              color="primary" 
+              color="primary"
               variant="outlined"
             />
           </Box>

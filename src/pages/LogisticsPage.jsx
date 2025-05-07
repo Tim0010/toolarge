@@ -32,11 +32,8 @@ import {
   Switch,
   FormControlLabel
 } from '@mui/material';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import HomeIcon from '@mui/icons-material/Home';
-import BusinessIcon from '@mui/icons-material/Business';
 
 const LogisticsPage = () => {
   const [activeTab, setActiveTab] = useState(0);

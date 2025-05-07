@@ -30,7 +30,7 @@ import {
   TableRow,
   Chip
 } from '@mui/material';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 

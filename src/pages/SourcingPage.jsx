@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { 
-  Box, 
-  Typography, 
-  Paper, 
-  Grid, 
-  TextField, 
-  Button, 
-  FormControl, 
-  InputLabel, 
-  Select, 
+import {
+  Box,
+  Typography,
+  Paper,
+  Grid,
+  TextField,
+  Button,
+  FormControl,
+  InputLabel,
+  Select,
   MenuItem,
   Card,
   CardContent,
@@ -22,7 +22,7 @@ import {
   ListItemText,
   Avatar
 } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
+
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import BusinessIcon from '@mui/icons-material/Business';
 
@@ -64,28 +64,28 @@ const SourcingPage = () => {
   const steps = ['Submit Request', 'Select Agent', 'Review & Confirm'];
 
   const mockAgents = [
-    { 
-      id: 1, 
-      name: 'Zhang Wei', 
-      country: 'China', 
+    {
+      id: 1,
+      name: 'Zhang Wei',
+      country: 'China',
       specialty: 'Electronics & Manufacturing',
       rating: 4.8,
       experience: '7 years',
       successfulDeals: 342
     },
-    { 
-      id: 2, 
-      name: 'Ananya Patel', 
-      country: 'India', 
+    {
+      id: 2,
+      name: 'Ananya Patel',
+      country: 'India',
       specialty: 'Textiles & Handicrafts',
       rating: 4.6,
       experience: '5 years',
       successfulDeals: 213
     },
-    { 
-      id: 3, 
-      name: 'David Ndlovu', 
-      country: 'South Africa', 
+    {
+      id: 3,
+      name: 'David Ndlovu',
+      country: 'South Africa',
       specialty: 'Machinery & Equipment',
       rating: 4.9,
       experience: '9 years',
@@ -193,9 +193,9 @@ const SourcingPage = () => {
                 .filter(agent => !country || agent.country === country)
                 .map((agent) => (
                 <Grid item xs={12} md={4} key={agent.id}>
-                  <Card 
-                    sx={{ 
-                      height: '100%', 
+                  <Card
+                    sx={{
+                      height: '100%',
                       cursor: 'pointer',
                       border: selectedAgent === agent.id ? '2px solid #1976d2' : 'none',
                       '&:hover': {
@@ -263,45 +263,45 @@ const SourcingPage = () => {
                   <ListItemIcon>
                     <CheckCircleIcon color="primary" />
                   </ListItemIcon>
-                  <ListItemText 
-                    primary="Source Country" 
-                    secondary={country} 
+                  <ListItemText
+                    primary="Source Country"
+                    secondary={country}
                   />
                 </ListItem>
                 <ListItem>
                   <ListItemIcon>
                     <CheckCircleIcon color="primary" />
                   </ListItemIcon>
-                  <ListItemText 
-                    primary="Product Category" 
-                    secondary={category} 
+                  <ListItemText
+                    primary="Product Category"
+                    secondary={category}
                   />
                 </ListItem>
                 <ListItem>
                   <ListItemIcon>
                     <CheckCircleIcon color="primary" />
                   </ListItemIcon>
-                  <ListItemText 
-                    primary="Product Details" 
-                    secondary={productDetails} 
+                  <ListItemText
+                    primary="Product Details"
+                    secondary={productDetails}
                   />
                 </ListItem>
                 <ListItem>
                   <ListItemIcon>
                     <CheckCircleIcon color="primary" />
                   </ListItemIcon>
-                  <ListItemText 
-                    primary="Quantity" 
-                    secondary={quantity} 
+                  <ListItemText
+                    primary="Quantity"
+                    secondary={quantity}
                   />
                 </ListItem>
                 <ListItem>
                   <ListItemIcon>
                     <CheckCircleIcon color="primary" />
                   </ListItemIcon>
-                  <ListItemText 
-                    primary="Budget" 
-                    secondary={`$${budget} USD`} 
+                  <ListItemText
+                    primary="Budget"
+                    secondary={`$${budget} USD`}
                   />
                 </ListItem>
               </List>
@@ -327,12 +327,12 @@ const SourcingPage = () => {
                 </Box>
               )}
             </Paper>
-            
+
             <Typography variant="body2" paragraph color="text.secondary">
               By confirming this request, you'll connect with your selected agent who will begin sourcing your product.
               They'll provide you with supplier options and pricing within 2-3 business days.
             </Typography>
-            
+
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
               <Button onClick={handleBack}>
                 Back
@@ -370,7 +370,7 @@ const SourcingPage = () => {
             </Step>
           ))}
         </Stepper>
-        
+
         {getStepContent(activeStep)}
       </Paper>
     </Box>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
-  Box, Typography, Grid, Card, CardContent, CardActionArea, Button,
-  Paper, Container, Avatar, Divider, Chip, Rating, useTheme, useMediaQuery,
+  Box, Typography, Grid, Card, CardActionArea, Button,
+  Paper, Container, Avatar, Chip, Rating,
   IconButton
 } from '@mui/material';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
@@ -20,8 +20,6 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
 const HomePage = () => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [activeTestimonial, setActiveTestimonial] = useState(0);
 
   const testimonials = [

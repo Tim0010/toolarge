@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import { 
-  Box, 
-  Typography, 
-  Paper, 
-  Grid, 
-  TextField, 
-  Button, 
+import {
+  Box,
+  Typography,
+  Paper,
+  Grid,
+  Button,
   Card,
   CardContent,
   Avatar,
-  Divider,
   List,
   ListItem,
   ListItemText,
@@ -22,12 +20,10 @@ import {
   Chip
 } from '@mui/material';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
-import SearchIcon from '@mui/icons-material/Search';
 import SendIcon from '@mui/icons-material/Send';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import PhoneIcon from '@mui/icons-material/Phone';
 import VideoCallIcon from '@mui/icons-material/VideoCall';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import PersonIcon from '@mui/icons-material/Person';
 
 const AgentPage = () => {
@@ -42,7 +38,7 @@ const AgentPage = () => {
 
   const handleAgentSelect = (agent) => {
     setSelectedAgent(agent);
-    
+
     // Load mock conversation for the demo
     if (agent.id === 1) {
       setMessages(mockConversations[0].messages);
@@ -57,17 +53,17 @@ const AgentPage = () => {
 
   const handleSendMessage = () => {
     if (!messageInput.trim()) return;
-    
+
     const newMessage = {
       id: messages.length + 1,
       sender: 'user',
       text: messageInput,
       timestamp: new Date().toISOString()
     };
-    
+
     setMessages([...messages, newMessage]);
     setMessageInput('');
-    
+
     // Simulate agent response for demo purposes
     setTimeout(() => {
       const agentResponse = {
@@ -76,7 +72,7 @@ const AgentPage = () => {
         text: "Thank you for your message. I'll check on the status of your shipment and get back to you within the next few hours. Is there any specific information you need about this shipment?",
         timestamp: new Date().toISOString()
       };
-      
+
       setMessages(prevMessages => [...prevMessages, agentResponse]);
     }, 2000);
   };
@@ -94,28 +90,28 @@ const AgentPage = () => {
   };
 
   const mockAgents = [
-    { 
-      id: 1, 
-      name: 'Zhang Wei', 
-      country: 'China', 
+    {
+      id: 1,
+      name: 'Zhang Wei',
+      country: 'China',
       specialty: 'Electronics & Manufacturing',
       status: 'online',
       lastActive: 'Just now',
       avatar: null
     },
-    { 
-      id: 2, 
-      name: 'Ananya Patel', 
-      country: 'India', 
+    {
+      id: 2,
+      name: 'Ananya Patel',
+      country: 'India',
       specialty: 'Textiles & Handicrafts',
       status: 'offline',
       lastActive: '2 hours ago',
       avatar: null
     },
-    { 
-      id: 3, 
-      name: 'David Ndlovu', 
-      country: 'South Africa', 
+    {
+      id: 3,
+      name: 'David Ndlovu',
+      country: 'South Africa',
       specialty: 'Machinery & Equipment',
       status: 'online',
       lastActive: '5 min ago',
@@ -212,15 +208,15 @@ const AgentPage = () => {
                   Your Assigned Agents
                 </Typography>
               </Box>
-              
+
               <List sx={{ height: '70vh', overflow: 'auto' }}>
                 {mockAgents.map((agent) => (
-                  <ListItem 
-                    button 
-                    key={agent.id} 
+                  <ListItem
+                    button
+                    key={agent.id}
                     onClick={() => handleAgentSelect(agent)}
                     selected={selectedAgent && selectedAgent.id === agent.id}
-                    sx={{ 
+                    sx={{
                       bgcolor: (selectedAgent && selectedAgent.id === agent.id) ? 'action.selected' : 'transparent',
                       '&:hover': { bgcolor: 'action.hover' }
                     }}
@@ -237,8 +233,8 @@ const AgentPage = () => {
                         </Avatar>
                       </Badge>
                     </ListItemAvatar>
-                    <ListItemText 
-                      primary={agent.name} 
+                    <ListItemText
+                      primary={agent.name}
                       secondary={
                         <Box component="span">
                           <Typography component="span" variant="body2" color="text.primary">
@@ -253,7 +249,7 @@ const AgentPage = () => {
               </List>
             </Paper>
           </Grid>
-          
+
           <Grid item xs={12} md={8}>
             {selectedAgent ? (
               <Paper sx={{ height: '70vh', display: 'flex', flexDirection: 'column' }}>
@@ -278,7 +274,7 @@ const AgentPage = () => {
                       </Typography>
                     </Box>
                   </Box>
-                  
+
                   <Box>
                     <IconButton>
                       <PhoneIcon />
@@ -288,7 +284,7 @@ const AgentPage = () => {
                     </IconButton>
                   </Box>
                 </Box>
-                
+
                 <Box sx={{ flexGrow: 1, overflow: 'auto', p: 2, bgcolor: '#f5f5f5' }}>
                   {messages.map((message) => (
                     <Box
@@ -304,7 +300,7 @@ const AgentPage = () => {
                           {selectedAgent.name.charAt(0)}
                         </Avatar>
                       )}
-                      
+
                       <Box
                         sx={{
                           maxWidth: '70%',
@@ -322,7 +318,7 @@ const AgentPage = () => {
                           {formatTimestamp(message.timestamp)}
                         </Typography>
                       </Box>
-                      
+
                       {message.sender === 'user' && (
                         <Avatar sx={{ ml: 1, width: 32, height: 32, bgcolor: 'secondary.main' }}>
                           <PersonIcon />
@@ -331,7 +327,7 @@ const AgentPage = () => {
                     </Box>
                   ))}
                 </Box>
-                
+
                 <Box sx={{ p: 2, borderTop: 1, borderColor: 'divider' }}>
                   <Grid container spacing={1} alignItems="center">
                     <Grid item xs>
@@ -356,8 +352,8 @@ const AgentPage = () => {
                       </Paper>
                     </Grid>
                     <Grid item>
-                      <Button 
-                        variant="contained" 
+                      <Button
+                        variant="contained"
                         endIcon={<SendIcon />}
                         onClick={handleSendMessage}
                         disabled={!messageInput.trim()}
@@ -391,14 +387,14 @@ const AgentPage = () => {
             <Typography variant="h6">
               Your Support Cases
             </Typography>
-            <Button 
-              variant="contained" 
+            <Button
+              variant="contained"
               startIcon={<SupportAgentIcon />}
             >
               Create New Case
             </Button>
           </Box>
-          
+
           <Grid container spacing={3}>
             {mockCases.map((supportCase) => (
               <Grid item xs={12} md={4} key={supportCase.id}>
@@ -408,17 +404,17 @@ const AgentPage = () => {
                       <Typography variant="h6">
                         {supportCase.title}
                       </Typography>
-                      <Chip 
-                        label={supportCase.status} 
+                      <Chip
+                        label={supportCase.status}
                         color={
-                          supportCase.status === 'Completed' ? 'success' : 
-                          supportCase.status === 'In Progress' ? 'primary' : 
+                          supportCase.status === 'Completed' ? 'success' :
+                          supportCase.status === 'In Progress' ? 'primary' :
                           'warning'
-                        } 
-                        size="small" 
+                        }
+                        size="small"
                       />
                     </Box>
-                    
+
                     <Typography variant="body2" color="text.secondary" gutterBottom>
                       <strong>Case ID:</strong> {supportCase.id}
                     </Typography>
@@ -428,7 +424,7 @@ const AgentPage = () => {
                     <Typography variant="body2" color="text.secondary" gutterBottom>
                       <strong>Last Updated:</strong> {supportCase.lastUpdated}
                     </Typography>
-                    
+
                     <Box sx={{ mt: 2 }}>
                       <Button variant="outlined" fullWidth>
                         View Details

@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { 
-  Box, 
-  Typography, 
-  Paper, 
-  Grid, 
-  TextField, 
-  Button, 
-  FormControl, 
-  InputLabel, 
-  Select, 
+import {
+  Box,
+  Typography,
+  Paper,
+  Grid,
+  TextField,
+  Button,
+  FormControl,
+  InputLabel,
+  Select,
   MenuItem,
   Card,
   CardContent,
@@ -24,10 +24,8 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  IconButton,
   List,
   ListItem,
-  ListItemIcon,
   ListItemText,
   Tabs,
   Tab
@@ -38,7 +36,6 @@ import CreditCardIcon from '@mui/icons-material/CreditCard';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import MoneyIcon from '@mui/icons-material/Money';
 
 const PaymentsPage = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -217,7 +214,7 @@ const PaymentsPage = () => {
           <Typography variant="h6" gutterBottom>
             Your Invoices
           </Typography>
-          
+
           <TableContainer>
             <Table>
               <TableHead>
@@ -238,16 +235,16 @@ const PaymentsPage = () => {
                     <TableCell>${invoice.amount.toFixed(2)}</TableCell>
                     <TableCell>{invoice.dueDate}</TableCell>
                     <TableCell>
-                      <Chip 
-                        label={invoice.status} 
-                        color={getStatusColor(invoice.status)} 
-                        size="small" 
+                      <Chip
+                        label={invoice.status}
+                        color={getStatusColor(invoice.status)}
+                        size="small"
                       />
                     </TableCell>
                     <TableCell>
-                      <Button 
-                        variant="outlined" 
-                        size="small" 
+                      <Button
+                        variant="outlined"
+                        size="small"
                         sx={{ mr: 1 }}
                         onClick={() => handleViewInvoice(invoice)}
                         startIcon={<VisibilityIcon />}
@@ -255,8 +252,8 @@ const PaymentsPage = () => {
                         View
                       </Button>
                       {invoice.status !== 'Paid' && (
-                        <Button 
-                          variant="contained" 
+                        <Button
+                          variant="contained"
                           size="small"
                           onClick={() => handleOpenPaymentDialog(invoice)}
                           startIcon={<PaymentsIcon />}
@@ -278,7 +275,7 @@ const PaymentsPage = () => {
           <Typography variant="h6" gutterBottom>
             Transaction History
           </Typography>
-          
+
           <TableContainer>
             <Table>
               <TableHead>
@@ -301,15 +298,15 @@ const PaymentsPage = () => {
                     <TableCell>${transaction.amount.toFixed(2)}</TableCell>
                     <TableCell>{transaction.paymentMethod}</TableCell>
                     <TableCell>
-                      <Chip 
-                        label={transaction.status} 
-                        color={getStatusColor(transaction.status)} 
-                        size="small" 
+                      <Chip
+                        label={transaction.status}
+                        color={getStatusColor(transaction.status)}
+                        size="small"
                       />
                     </TableCell>
                     <TableCell>
-                      <Button 
-                        variant="outlined" 
+                      <Button
+                        variant="outlined"
                         size="small"
                         startIcon={<ReceiptIcon />}
                       >
@@ -330,20 +327,20 @@ const PaymentsPage = () => {
             <Typography variant="h6">
               Payment Methods
             </Typography>
-            <Button 
-              variant="contained" 
+            <Button
+              variant="contained"
               onClick={handleOpenCardDialog}
               startIcon={<CreditCardIcon />}
             >
               Add Payment Method
             </Button>
           </Box>
-          
+
           <Grid container spacing={3}>
             {mockPaymentMethods.map((method) => (
               <Grid item xs={12} md={4} key={method.id}>
-                <Card 
-                  sx={{ 
+                <Card
+                  sx={{
                     height: '100%',
                     border: selectedPaymentMethod === method.id ? '2px solid #1976d2' : 'none',
                     '&:hover': {
@@ -361,20 +358,20 @@ const PaymentsPage = () => {
                         {method.type}
                       </Typography>
                     </Box>
-                    
+
                     <Typography variant="body2" paragraph>
                       {method.name}
                     </Typography>
-                    
+
                     {method.isDefault && (
-                      <Chip 
-                        label="Default" 
-                        color="primary" 
-                        size="small" 
+                      <Chip
+                        label="Default"
+                        color="primary"
+                        size="small"
                         sx={{ mb: 2 }}
                       />
                     )}
-                    
+
                     <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                       <Button size="small">Edit</Button>
                       {!method.isDefault && (
@@ -432,13 +429,13 @@ const PaymentsPage = () => {
                   </Typography>
                 </Grid>
               </Grid>
-              
+
               <Divider sx={{ my: 3 }} />
-              
+
               <Typography variant="subtitle1" gutterBottom>
                 Payment Details
               </Typography>
-              
+
               <FormControl fullWidth sx={{ mb: 2 }}>
                 <InputLabel id="payment-method-label">Payment Method</InputLabel>
                 <Select
@@ -461,7 +458,7 @@ const PaymentsPage = () => {
                   ))}
                 </Select>
               </FormControl>
-              
+
               {paymentMethod === 1 && (
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
@@ -474,13 +471,13 @@ const PaymentsPage = () => {
                   </Grid>
                 </Grid>
               )}
-              
+
               {paymentMethod === 2 && (
                 <Typography variant="body2" color="text.secondary">
                   You will receive a prompt on your mobile device to complete this payment.
                 </Typography>
               )}
-              
+
               {paymentMethod === 3 && (
                 <Box>
                   <Typography variant="body2" color="text.secondary" paragraph>
@@ -507,8 +504,8 @@ const PaymentsPage = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClosePaymentDialog}>Cancel</Button>
-          <Button 
-            variant="contained" 
+          <Button
+            variant="contained"
             onClick={handleProcessPayment}
             startIcon={<PaymentsIcon />}
             disabled={!paymentMethod}
@@ -528,12 +525,12 @@ const PaymentsPage = () => {
                 <Typography variant="h5">
                   Invoice
                 </Typography>
-                <Chip 
-                  label={selectedInvoice.status} 
-                  color={getStatusColor(selectedInvoice.status)} 
+                <Chip
+                  label={selectedInvoice.status}
+                  color={getStatusColor(selectedInvoice.status)}
                 />
               </Box>
-              
+
               <Grid container spacing={2} sx={{ mb: 3 }}>
                 <Grid item xs={6}>
                   <Typography variant="body2" color="text.secondary">
@@ -560,11 +557,11 @@ const PaymentsPage = () => {
                   </Typography>
                 </Grid>
               </Grid>
-              
+
               <Typography variant="subtitle1" gutterBottom>
                 Service Details
               </Typography>
-              
+
               <TableContainer component={Paper} variant="outlined" sx={{ mb: 3 }}>
                 <Table>
                   <TableHead>
@@ -593,18 +590,18 @@ const PaymentsPage = () => {
                   </TableBody>
                 </Table>
               </TableContainer>
-              
+
               <Typography variant="subtitle2" gutterBottom>
                 Payment Information
               </Typography>
               <Typography variant="body2" color="text.secondary" paragraph>
                 Please make payment by the due date to avoid any service interruptions.
               </Typography>
-              
+
               {selectedInvoice.status !== 'Paid' && (
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                  <Button 
-                    variant="contained" 
+                  <Button
+                    variant="contained"
                     onClick={() => {
                       handleCloseInvoiceDialog();
                       handleOpenPaymentDialog(selectedInvoice);
@@ -641,7 +638,7 @@ const PaymentsPage = () => {
                 <MenuItem value="bank">Bank Account</MenuItem>
               </Select>
             </FormControl>
-            
+
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
@@ -680,8 +677,8 @@ const PaymentsPage = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseCardDialog}>Cancel</Button>
-          <Button 
-            variant="contained" 
+          <Button
+            variant="contained"
             onClick={handleCloseCardDialog}
           >
             Save Payment Method

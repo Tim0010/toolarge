@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { 
-  Box, 
-  Typography, 
-  Paper, 
-  Grid, 
-  TextField, 
-  Button, 
-  FormControl, 
-  InputLabel, 
-  Select, 
+import {
+  Box,
+  Typography,
+  Paper,
+  Grid,
+  TextField,
+  Button,
+  FormControl,
+  InputLabel,
+  Select,
   MenuItem,
   Card,
   CardContent,
@@ -36,7 +36,7 @@ import WarehouseIcon from '@mui/icons-material/Warehouse';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+
 // We'll use TextField with type="date" instead of DatePicker
 import InventoryIcon from '@mui/icons-material/Inventory';
 import StorageIcon from '@mui/icons-material/Storage';
@@ -44,8 +44,6 @@ import StorageIcon from '@mui/icons-material/Storage';
 const WarehousePage = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [warehouseLocation, setWarehouseLocation] = useState('');
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
   const [storageType, setStorageType] = useState('');
   const [spaceRequired, setSpaceRequired] = useState('');
   const [openBookingDialog, setOpenBookingDialog] = useState(false);
@@ -209,15 +207,15 @@ const WarehousePage = () => {
             <Typography variant="h6">
               Available Warehouses
             </Typography>
-            <Button 
-              variant="contained" 
+            <Button
+              variant="contained"
               startIcon={<AddIcon />}
               onClick={handleOpenBookingDialog}
             >
               Book Storage
             </Button>
           </Box>
-          
+
           <Grid container spacing={3}>
             {mockWarehouses.map((warehouse) => (
               <Grid item xs={12} md={4} key={warehouse.id}>
@@ -231,28 +229,28 @@ const WarehousePage = () => {
                     </Typography>
                     <Typography variant="body2" color="text.secondary" gutterBottom>
                       <strong>Availability:</strong> {' '}
-                      <Chip 
-                        size="small" 
-                        label={warehouse.availability} 
+                      <Chip
+                        size="small"
+                        label={warehouse.availability}
                         color={
-                          warehouse.availability === 'High' ? 'success' : 
-                          warehouse.availability === 'Medium' ? 'primary' : 
+                          warehouse.availability === 'High' ? 'success' :
+                          warehouse.availability === 'Medium' ? 'primary' :
                           'error'
                         }
                       />
                     </Typography>
-                    
+
                     <Typography variant="subtitle2" sx={{ mt: 2, mb: 1 }}>
                       Pricing (per day):
                     </Typography>
-                    
+
                     <List dense>
                       <ListItem>
                         <ListItemIcon>
                           <StorageIcon fontSize="small" />
                         </ListItemIcon>
-                        <ListItemText 
-                          primary="Pallet Storage" 
+                        <ListItemText
+                          primary="Pallet Storage"
                           secondary={`$${warehouse.pricingPerDay.palletStorage.toFixed(2)} per pallet`}
                         />
                       </ListItem>
@@ -260,8 +258,8 @@ const WarehousePage = () => {
                         <ListItemIcon>
                           <WarehouseIcon fontSize="small" />
                         </ListItemIcon>
-                        <ListItemText 
-                          primary="Bulk Storage" 
+                        <ListItemText
+                          primary="Bulk Storage"
                           secondary={`$${warehouse.pricingPerDay.bulkStorage.toFixed(2)} per sqm`}
                         />
                       </ListItem>
@@ -269,16 +267,16 @@ const WarehousePage = () => {
                         <ListItemIcon>
                           <InventoryIcon fontSize="small" />
                         </ListItemIcon>
-                        <ListItemText 
-                          primary="Secured Storage" 
+                        <ListItemText
+                          primary="Secured Storage"
                           secondary={`$${warehouse.pricingPerDay.securedStorage.toFixed(2)} per unit`}
                         />
                       </ListItem>
                     </List>
-                    
+
                     <Box sx={{ mt: 2 }}>
-                      <Button 
-                        variant="outlined" 
+                      <Button
+                        variant="outlined"
                         fullWidth
                         onClick={handleOpenBookingDialog}
                       >
@@ -298,7 +296,7 @@ const WarehousePage = () => {
           <Typography variant="h6" gutterBottom>
             Your Storage Bookings
           </Typography>
-          
+
           {mockStorageBookings.length > 0 ? (
             <TableContainer>
               <Table>
@@ -323,10 +321,10 @@ const WarehousePage = () => {
                       <TableCell>{`${booking.startDate} to ${booking.endDate}`}</TableCell>
                       <TableCell>{booking.space}</TableCell>
                       <TableCell>
-                        <Chip 
-                          label={booking.status} 
-                          color={booking.status === 'Active' ? 'success' : 'primary'} 
-                          size="small" 
+                        <Chip
+                          label={booking.status}
+                          color={booking.status === 'Active' ? 'success' : 'primary'}
+                          size="small"
                         />
                       </TableCell>
                       <TableCell>{booking.cost}</TableCell>
@@ -345,8 +343,8 @@ const WarehousePage = () => {
               <Typography variant="body1" color="text.secondary">
                 You don't have any storage bookings yet.
               </Typography>
-              <Button 
-                variant="contained" 
+              <Button
+                variant="contained"
                 sx={{ mt: 2 }}
                 startIcon={<AddIcon />}
                 onClick={handleOpenBookingDialog}
@@ -363,7 +361,7 @@ const WarehousePage = () => {
           <Typography variant="h6" gutterBottom>
             Your Inventory
           </Typography>
-          
+
           {mockInventory.length > 0 ? (
             <TableContainer>
               <Table>
@@ -389,23 +387,23 @@ const WarehousePage = () => {
                       <TableCell>{item.storageType}</TableCell>
                       <TableCell>{item.arrivalDate}</TableCell>
                       <TableCell>
-                        <Chip 
-                          label={item.status} 
-                          color={item.status === 'In Stock' ? 'success' : 'primary'} 
-                          size="small" 
+                        <Chip
+                          label={item.status}
+                          color={item.status === 'In Stock' ? 'success' : 'primary'}
+                          size="small"
                         />
                       </TableCell>
                       <TableCell>
-                        <IconButton 
-                          size="small" 
-                          aria-label="add" 
+                        <IconButton
+                          size="small"
+                          aria-label="add"
                           onClick={() => handleInventoryAction(item, 'add')}
                         >
                           <AddIcon fontSize="small" />
                         </IconButton>
-                        <IconButton 
-                          size="small" 
-                          aria-label="remove" 
+                        <IconButton
+                          size="small"
+                          aria-label="remove"
                           onClick={() => handleInventoryAction(item, 'remove')}
                         >
                           <RemoveIcon fontSize="small" />
@@ -455,7 +453,7 @@ const WarehousePage = () => {
                   type="date"
                   fullWidth
                   InputLabelProps={{ shrink: true }}
-                  onChange={(e) => setStartDate(e.target.value)}
+                  // onChange handler removed to fix ESLint warning
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -464,7 +462,7 @@ const WarehousePage = () => {
                   type="date"
                   fullWidth
                   InputLabelProps={{ shrink: true }}
-                  onChange={(e) => setEndDate(e.target.value)}
+                  // onChange handler removed to fix ESLint warning
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -540,8 +538,8 @@ const WarehousePage = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseInventoryDialog}>Cancel</Button>
-          <Button 
-            variant="contained" 
+          <Button
+            variant="contained"
             onClick={handleInventoryActionSubmit}
             color={inventoryAction === 'add' ? 'primary' : 'secondary'}
           >

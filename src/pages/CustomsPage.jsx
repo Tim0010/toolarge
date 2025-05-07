@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  Box, 
-  Typography, 
-  Paper, 
-  Grid, 
-  TextField, 
-  Button, 
-  FormControl, 
-  InputLabel, 
-  Select, 
+import React, { useState } from 'react';
+import {
+  Box,
+  Typography,
+  Paper,
+  Grid,
+  TextField,
+  Button,
+  FormControl,
+  InputLabel,
+  Select,
   MenuItem,
   Card,
   CardContent,
@@ -17,7 +17,6 @@ import {
   TableBody,
   TableCell,
   TableContainer,
-  TableHead,
   TableRow,
   LinearProgress,
   Alert
@@ -56,14 +55,14 @@ const CustomsPage = () => {
 
     // Clear any previous errors
     setError('');
-    
+
     // Simulate calculation process
     setIsCalculating(true);
-    
+
     // Mock calculation - in a real app this would call an API
     setTimeout(() => {
       const value = parseFloat(productValue);
-      
+
       // Different duty rates based on product category
       const dutyRates = {
         'Electronics': 0.25,
@@ -77,28 +76,28 @@ const CustomsPage = () => {
         'Food': 0.2,
         'Other': 0.25
       };
-      
+
       const dutyRate = dutyRates[productCategory];
       const customsDuty = value * dutyRate;
-      
+
       // VAT is typically 16% in Zambia
       const vat = value * 0.16;
-      
+
       // Processing fees
       const processingFee = 85; // Fixed fee in USD
-      
+
       // Clearance fees vary slightly by origin
       const clearanceRates = {
         'China': 120,
-        'India': 110, 
+        'India': 110,
         'South Africa': 95
       };
-      
+
       const clearanceFee = clearanceRates[origin];
-      
+
       // Total customs cost
       const totalCost = customsDuty + vat + processingFee + clearanceFee;
-      
+
       setCalculationResult({
         customsDuty,
         vat,
@@ -108,7 +107,7 @@ const CustomsPage = () => {
         dutyRate,
         vatRate: 0.16
       });
-      
+
       setIsCalculating(false);
     }, 1500);
   };
@@ -130,13 +129,13 @@ const CustomsPage = () => {
             <Typography variant="h6" gutterBottom>
               Calculate Import Costs
             </Typography>
-            
+
             {error && (
               <Alert severity="error" sx={{ mb: 2 }}>
                 {error}
               </Alert>
             )}
-            
+
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <FormControl fullWidth required>
@@ -161,7 +160,7 @@ const CustomsPage = () => {
                   </Select>
                 </FormControl>
               </Grid>
-              
+
               <Grid item xs={12} sm={6}>
                 <TextField
                   required
@@ -173,7 +172,7 @@ const CustomsPage = () => {
                   type="number"
                 />
               </Grid>
-              
+
               <Grid item xs={12} sm={6}>
                 <TextField
                   id="weight"
@@ -184,7 +183,7 @@ const CustomsPage = () => {
                   type="number"
                 />
               </Grid>
-              
+
               <Grid item xs={12}>
                 <FormControl fullWidth required>
                   <InputLabel id="origin-label">Country of Origin</InputLabel>
@@ -201,7 +200,7 @@ const CustomsPage = () => {
                   </Select>
                 </FormControl>
               </Grid>
-              
+
               <Grid item xs={12}>
                 <Button
                   variant="contained"
@@ -213,7 +212,7 @@ const CustomsPage = () => {
                 >
                   Calculate Import Costs
                 </Button>
-                
+
                 {isCalculating && (
                   <LinearProgress sx={{ mt: 2 }} />
                 )}
@@ -221,7 +220,7 @@ const CustomsPage = () => {
             </Grid>
           </Paper>
         </Grid>
-        
+
         <Grid item xs={12} md={6}>
           <Paper sx={{ p: 3, height: '100%' }}>
             {!calculationResult && !isCalculating && (
@@ -235,13 +234,13 @@ const CustomsPage = () => {
                 </Typography>
               </Box>
             )}
-            
+
             {calculationResult && (
               <Box>
                 <Typography variant="h6" gutterBottom>
                   Import Cost Breakdown
                 </Typography>
-                
+
                 <TableContainer component={Paper} variant="outlined" sx={{ mb: 3 }}>
                   <Table>
                     <TableBody>
@@ -300,18 +299,18 @@ const CustomsPage = () => {
                     </TableBody>
                   </Table>
                 </TableContainer>
-                
+
                 <Alert severity="info" sx={{ mb: 2 }}>
                   This is an estimate based on current rates. Actual costs may vary.
                 </Alert>
-                
+
                 <Divider sx={{ my: 2 }} />
-                
+
                 <Typography variant="subtitle2" gutterBottom>
                   Need help with customs clearance?
                 </Typography>
-                <Button 
-                  variant="outlined" 
+                <Button
+                  variant="outlined"
                   sx={{ mt: 1 }}
                   href="/shipping"
                 >
@@ -322,7 +321,7 @@ const CustomsPage = () => {
           </Paper>
         </Grid>
       </Grid>
-      
+
       <Paper sx={{ p: 3, mt: 4 }}>
         <Typography variant="h6" gutterBottom>
           Zambian Import Duty Information
@@ -330,7 +329,7 @@ const CustomsPage = () => {
         <Typography variant="body2" paragraph>
           Import duties in Zambia are regulated by the Zambia Revenue Authority (ZRA) and are based on the CIF (Cost, Insurance, and Freight) value of goods.
         </Typography>
-        
+
         <Typography variant="subtitle2" gutterBottom>
           Common Import Charges:
         </Typography>
